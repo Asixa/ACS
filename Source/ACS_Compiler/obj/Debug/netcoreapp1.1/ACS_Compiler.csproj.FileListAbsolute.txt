@@ -1,9 +1,0 @@
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\netcoreapp1.1\ACS_Compiler.deps.json
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\netcoreapp1.1\ACS_Compiler.runtimeconfig.json
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\netcoreapp1.1\ACS_Compiler.runtimeconfig.dev.json
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\netcoreapp1.1\ACS_Compiler.dll
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\netcoreapp1.1\ACS_Compiler.pdb
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\netcoreapp1.1\ACS_Compiler.csprojResolveAssemblyReference.cache
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\netcoreapp1.1\ACS_Compiler.AssemblyInfo.cs
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\netcoreapp1.1\ACS_Compiler.dll
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\netcoreapp1.1\ACS_Compiler.pdb
