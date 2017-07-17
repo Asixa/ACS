@@ -1,0 +1,9 @@
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\netcoreapp1.1\ACS_Interpreter.deps.json
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\netcoreapp1.1\ACS_Interpreter.runtimeconfig.json
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\netcoreapp1.1\ACS_Interpreter.runtimeconfig.dev.json
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\netcoreapp1.1\ACS_Interpreter.dll
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\netcoreapp1.1\ACS_Interpreter.pdb
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\netcoreapp1.1\ACS_Interpreter.csprojResolveAssemblyReference.cache
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\netcoreapp1.1\ACS_Interpreter.AssemblyInfo.cs
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\netcoreapp1.1\ACS_Interpreter.dll
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\netcoreapp1.1\ACS_Interpreter.pdb

@@ -1,0 +1,9 @@
+E:\Programing\Github\ACS\Source\ACS_Lexer\bin\Debug\netcoreapp1.1\ACS_Lexer.deps.json
+E:\Programing\Github\ACS\Source\ACS_Lexer\bin\Debug\netcoreapp1.1\ACS_Lexer.runtimeconfig.json
+E:\Programing\Github\ACS\Source\ACS_Lexer\bin\Debug\netcoreapp1.1\ACS_Lexer.runtimeconfig.dev.json
+E:\Programing\Github\ACS\Source\ACS_Lexer\bin\Debug\netcoreapp1.1\ACS_Lexer.dll
+E:\Programing\Github\ACS\Source\ACS_Lexer\bin\Debug\netcoreapp1.1\ACS_Lexer.pdb
+E:\Programing\Github\ACS\Source\ACS_Lexer\obj\Debug\netcoreapp1.1\ACS_Lexer.csprojResolveAssemblyReference.cache
+E:\Programing\Github\ACS\Source\ACS_Lexer\obj\Debug\netcoreapp1.1\ACS_Lexer.AssemblyInfo.cs
+E:\Programing\Github\ACS\Source\ACS_Lexer\obj\Debug\netcoreapp1.1\ACS_Lexer.dll
+E:\Programing\Github\ACS\Source\ACS_Lexer\obj\Debug\netcoreapp1.1\ACS_Lexer.pdb
