@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ACS_Lexer
+namespace ACS_Compiler
 {
-    class Program
+    class ACS_Compiler
     {
         static void Main(string[] args)
         {

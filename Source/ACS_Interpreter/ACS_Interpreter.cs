@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ACS_Interpreter
 {
-    class Program
+    class ACS_Interpreter
     {
         static void Main(string[] args)
         {
