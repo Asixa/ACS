@@ -15,14 +15,14 @@ namespace ACS_Lexer
         Float
     }
 
-    class Token
+    public abstract class Token
     {
-        public static Token EOF = new Token(-1);
+        public static readonly int EOF = -1;
         public static string EOL = "\\n";
-        private int line_number;
         public Types type;
+        int line_number;
 
-        private Token(int line)
+        protected Token(int line)
         {
             line_number = line;
         }
@@ -32,7 +32,15 @@ namespace ACS_Lexer
         }
         public int GetNumber()
         {
-            throw new Exception("nut number token");
+            throw new Exception("not number token");
+        }
+        public float GetFloat()
+        {
+            throw new Exception("not float token");
+        }
+        public bool GetBool()
+        {
+            throw new Exception("not bool token");
         }
         public string GetText()
         {
