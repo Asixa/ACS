@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Compiler", "ACS_Compiler\ACS_Compiler.csproj", "{2D437194-4A82-4D68-8142-819A44852264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Interpreter", "ACS_Interpreter\ACS_Interpreter.csproj", "{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Lexer", "ACS_Lexer\ACS_Lexer.csproj", "{31679D32-383F-4DDD-ABE8-F950EE5F98AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D437194-4A82-4D68-8142-819A44852264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D437194-4A82-4D68-8142-819A44852264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D437194-4A82-4D68-8142-819A44852264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D437194-4A82-4D68-8142-819A44852264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31679D32-383F-4DDD-ABE8-F950EE5F98AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31679D32-383F-4DDD-ABE8-F950EE5F98AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31679D32-383F-4DDD-ABE8-F950EE5F98AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31679D32-383F-4DDD-ABE8-F950EE5F98AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
