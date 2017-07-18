@@ -17,7 +17,7 @@ namespace ACS_Lexer
 
     public abstract class Token
     {
-        public static readonly int EOF = -1;
+        public static readonly Token EOF = null;
         public static string EOL = "\\n";
         public Types type;
         int line_number;
