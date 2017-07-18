@@ -1,0 +1,18 @@
+@ System
+@ A.dll
+
+a = 1;
+b = "This is a string";
+c = true;
+
+func A()
+{
+	print("hello,world");
+
+	return Anything;
+}
+
+#{
+		// 这里调用原生C#
+
+}
