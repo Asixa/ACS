@@ -10,6 +10,7 @@ namespace ACS_Lexer
 {
     class ACS_Lexer
     {
+        //按照这个顺序进行判断
         public static string regex_pat1 = "\\s*";
         public static string regex_pat2 = "(//.*)";
         public static string regex_pat3 = "([0-9]+[.][0-9]+)";
@@ -41,6 +42,7 @@ namespace ACS_Lexer
         static List<Token> queue = new List<Token>();
         static void _Main(string[] args)
         {
+            //后面变成从外
             file_stream = new FileStream("ACS_Lexer.cs", FileMode.Open);
             file_reader = new StreamReader(file_stream);
             program = file_reader.ReadToEnd();
@@ -53,6 +55,7 @@ namespace ACS_Lexer
                 AddToken(item.Value);
             }
 
+            //测试使用代码，没啥
             /*
             foreach (Match item in matches)
             {
@@ -99,10 +102,13 @@ namespace ACS_Lexer
             {
                 Console.WriteLine(s);
                 Console.WriteLine("");
+                //此处后面加上报错
             }
         }
         
-        
+        /// <summary>
+        /// 进行字符串处理
+        /// </summary>
         static string ToStringLiteral(string s)
         {
             StringBuilder sb = new StringBuilder();
@@ -125,7 +131,10 @@ namespace ACS_Lexer
             }
             return sb.ToString();
         }
-        
+        /// <summary>
+        /// 判断被获取的字符串是在正则的哪一组匹配的。
+        /// c#不自带这个功能还得自己写，还容易出错
+        /// </summary>
         static bool InGroup(int i, string s)
         {
             switch (i)
