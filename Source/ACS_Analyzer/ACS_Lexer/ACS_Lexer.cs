@@ -39,7 +39,7 @@ namespace ACS_Lexer
         static StreamReader file_reader;
         private static MatchCollection matches;
         static List<Token> queue = new List<Token>();
-        static void Main(string[] args)
+        static void _Main(string[] args)
         {
             file_stream = new FileStream("ACS_Lexer.cs", FileMode.Open);
             file_reader = new StreamReader(file_stream);
