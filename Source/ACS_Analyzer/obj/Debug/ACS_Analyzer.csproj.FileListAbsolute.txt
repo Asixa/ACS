@@ -4,3 +4,9 @@ G:\GIT\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.pdb
 G:\GIT\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.csprojResolveAssemblyReference.cache
 G:\GIT\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.exe
 G:\GIT\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.pdb
+E:\Programing\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.exe.config
+E:\Programing\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.exe
+E:\Programing\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.pdb
+E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.csprojResolveAssemblyReference.cache
+E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.exe
+E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.pdb
