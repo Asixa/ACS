@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ACS_Lexer")]
+[assembly: AssemblyTitle("ACS_Analyzer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ACS_Lexer")]
+[assembly: AssemblyProduct("ACS_Analyzer")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("31679d32-383f-4ddd-abe8-f950ee5f98ad")]
+[assembly: Guid("e7a4c199-de8f-441f-b236-021009ddb037")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
