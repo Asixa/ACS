@@ -1,6 +1,0 @@
-G:\GIT\ACS\Source\ACS_Lexer\bin\Debug\ACS_Lexer.exe.config
-G:\GIT\ACS\Source\ACS_Lexer\bin\Debug\ACS_Lexer.exe
-G:\GIT\ACS\Source\ACS_Lexer\bin\Debug\ACS_Lexer.pdb
-G:\GIT\ACS\Source\ACS_Lexer\obj\Debug\ACS_Lexer.csprojResolveAssemblyReference.cache
-G:\GIT\ACS\Source\ACS_Lexer\obj\Debug\ACS_Lexer.exe
-G:\GIT\ACS\Source\ACS_Lexer\obj\Debug\ACS_Lexer.pdb
