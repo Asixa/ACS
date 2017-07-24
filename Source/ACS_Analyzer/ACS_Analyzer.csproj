@@ -42,16 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACS_Lexer\ACS_Lexer.cs" />
-    <Compile Include="ACS_Parser\ASLeaf.cs" />
-    <Compile Include="ACS_Parser\ASList.cs" />
-    <Compile Include="ACS_Parser\ASTree.cs" />
+    <Compile Include="ACS_Lexer\Lexer.cs" />
+    <Compile Include="ACS_Parser\Parser.cs" />
+    <Compile Include="BNF_Engine\BNF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ACS_Lexer\Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Script.acs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

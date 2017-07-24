@@ -10,3 +10,12 @@ E:\Programing\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.pdb
 E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.csprojResolveAssemblyReference.cache
 E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.exe
 E:\Programing\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.pdb
+G:\GIT\ACS\Source\ACS_Analyzer\bin\Debug\Example.acs
+F:\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.exe.config
+F:\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.exe
+F:\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.pdb
+F:\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.exe
+F:\Github\ACS\Source\ACS_Analyzer\bin\Debug\ACS_Analyzer.pdb
+F:\Github\ACS\Source\ACS_Analyzer\obj\Debug\ACS_Analyzer.csprojResolveAssemblyReference.cache
+F:\Github\ACS\Source\ACS_Analyzer\bin\Debug\Script.acs
+E:\Programing\Github\ACS\Source\ACS_Analyzer\bin\Debug\Script.acs

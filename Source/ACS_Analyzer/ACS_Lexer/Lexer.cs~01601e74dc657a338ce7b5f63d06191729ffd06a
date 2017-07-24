@@ -8,7 +8,7 @@ using System.IO;
 
 namespace ACS_Lexer
 {
-    class ACS_Lexer
+    class Lexer
     {
         //按照这个顺序进行判断
         public static string regex_pat1 = "\\s*";
@@ -21,29 +21,16 @@ namespace ACS_Lexer
         public static string regex_pat = "((//.*)|([0-9]+[.][0-9]+)|([0-9]+)|(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")" + 
             "|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\||[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~])?";
         //|\\p{Punct} \\s* (//.*)|
-        public static string program = "void xxx(){\n" +
-            "int i666 = 0;\n" +
-            "float f = 666.666;\n" +
-            "i++;\n" +
-            "i += 1" +
-            "}\n" +
-            "//fangxm is very 666666666666\n" +
-            "==" +
-            "<=" +
-            ">=" +
-            "||" +
-            "\"6666666666666\"\n" +
-            "\"" +
-            "/***/";
+        public static string program = File.ReadAllText(Environment.CurrentDirectory + "/Example.acs");
 
         static FileStream file_stream;
         static StreamReader file_reader;
         private static MatchCollection matches;
         static List<Token> queue = new List<Token>();
-        static void _Main(string[] args)
+        public static void _Main()
         {
             //后面变成从外
-            file_stream = new FileStream("ACS_Lexer.cs", FileMode.Open);
+            file_stream = new FileStream("example.acs", FileMode.Open);
             file_reader = new StreamReader(file_stream);
             program = file_reader.ReadToEnd();
             file_reader.Close();
@@ -55,20 +42,11 @@ namespace ACS_Lexer
                 AddToken(item.Value);
             }
 
-            //测试使用代码，没啥
-            /*
-            foreach (Match item in matches)
-            {
-                Console.WriteLine(item.Value);
-                //AddToken(item.Value);
-            }*/
-            //Console.WriteLine("");
-            /*
-            foreach (Match item in matches)
-            {
-                Console.Write(item);
-            }*/
             Console.WriteLine(queue.Count);
+            for(int i = 0; i < queue.Count; i++)
+            {
+                Console.WriteLine(queue[i].type+" "+queue[i].;
+            }
             Console.Read();
             
         }

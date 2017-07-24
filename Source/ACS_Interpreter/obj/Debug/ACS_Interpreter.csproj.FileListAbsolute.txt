@@ -1,0 +1,6 @@
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\ACS_Interpreter.exe.config
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\ACS_Interpreter.exe
+E:\Programing\Github\ACS\Source\ACS_Interpreter\bin\Debug\ACS_Interpreter.pdb
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\ACS_Interpreter.csprojResolveAssemblyReference.cache
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\ACS_Interpreter.exe
+E:\Programing\Github\ACS\Source\ACS_Interpreter\obj\Debug\ACS_Interpreter.pdb
