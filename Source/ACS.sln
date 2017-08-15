@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Compiler", "ACS_Compiler\ACS_Compiler.csproj", "{2D437194-4A82-4D68-8142-819A44852264}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Interpreter", "ACS_Interpreter\ACS_Interpreter.csproj", "{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS_Analyzer", "ACS_Analyzer\ACS_Analyzer.csproj", "{E7A4C199-DE8F-441F-B236-021009DDB037}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS", "ACS\ACS.csproj", "{E7A4C199-DE8F-441F-B236-021009DDB037}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF241240-8EEF-445C-8F40-397CF1D6ABEE}"
 EndProject
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2D437194-4A82-4D68-8142-819A44852264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D437194-4A82-4D68-8142-819A44852264}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D437194-4A82-4D68-8142-819A44852264}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D437194-4A82-4D68-8142-819A44852264}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C98EB88-FDB2-459E-83FE-1ACB43D31C98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7A4C199-DE8F-441F-B236-021009DDB037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7A4C199-DE8F-441F-B236-021009DDB037}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7A4C199-DE8F-441F-B236-021009DDB037}.Release|Any CPU.ActiveCfg = Release|Any CPU

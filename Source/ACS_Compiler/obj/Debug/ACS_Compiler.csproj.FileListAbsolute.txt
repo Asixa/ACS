@@ -1,8 +1,0 @@
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\ACS_Compiler.exe.config
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\ACS_Compiler.exe
-E:\Programing\Github\ACS\Source\ACS_Compiler\bin\Debug\ACS_Compiler.pdb
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\ACS_Compiler.exe
-E:\Programing\Github\ACS\Source\ACS_Compiler\obj\Debug\ACS_Compiler.pdb
-F:\Github\ACS\Source\ACS_Compiler\bin\Debug\ACS_Compiler.exe.config
-F:\Github\ACS\Source\ACS_Compiler\obj\Debug\ACS_Compiler.exe
-F:\Github\ACS\Source\ACS_Compiler\obj\Debug\ACS_Compiler.pdb
