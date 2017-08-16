@@ -12,11 +12,11 @@ namespace ACS.ACS_Lexer
             new TokenDefinition("",""),
             new TokenDefinition("","(\\v*)"),
             new TokenDefinition("","(//.*)"),
-            new TokenDefinition("Float","([-]?[0-9]+[.][0-9]+)","Float"),
-            new TokenDefinition("String","(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"),
-            new TokenDefinition("Identifier","([A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|)"),
-            new TokenDefinition("Number","([-]?[0-9]+)","Int"),
-            new TokenDefinition("Operator","[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"),
+            new TokenDefinition("float","([-]?[0-9]+[.][0-9]+)","Float"),
+            new TokenDefinition("string","(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"),
+            new TokenDefinition("identifier","([A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|)"),
+            new TokenDefinition("int","([-]?[0-9]+)","Int"),
+            new TokenDefinition("operator","[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"),
         };
 
         public static string regex_pat;
@@ -51,7 +51,7 @@ namespace ACS.ACS_Lexer
             stream_reader = new StreamReader(file_stream);
             while (ReadLine()){}
             queue.Add(null);
-            //print_result(); //这里输出分析结果
+            print_result(); //这里输出分析结果
             return queue;
         }
 

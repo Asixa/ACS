@@ -1,4 +1,9 @@
 ﻿using System;
+using ACS.ACS_Lexer;
+using ACS.ACS_Parser;
+using ACS.ACS_Parser.BNF;
+using ACS.Variable_Register;
+
 namespace ACS
 {
     internal class Program
@@ -19,10 +24,11 @@ namespace ACS
 
         public static void _main()
         {
-            //var vars = new ACS_Parser.VariableList();
+            var register = new Register();
 
-            ACS_Lexer.Lexer._Main();
 
+            //var parser=new ParserEngine(Lexer._Main(), true);
+            BNF.Match(ACS_Lexer.Lexer._Main());
             //  var parser = new ACS_Parser.Parser(ACS_Lexer.Lexer._Main());
             //  parser.Start();
             //   BNF.Match(ACS_Lexer.Lexer._Main());

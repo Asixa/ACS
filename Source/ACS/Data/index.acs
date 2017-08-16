@@ -1,14 +1,1 @@
-﻿[abc];
-a=100;
-d=-1.5;
-c=-10;
-input(b);
-if(b>a){
-//23323232323 23123 23 12 312 Asixa is best;
-print("233");
-}
-
-if(b<=a){
-print(666);
-}
-goto abc;
+﻿b+++++++;
