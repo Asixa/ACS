@@ -1,4 +1,4 @@
-﻿namespace ACS.ACS_Lexer
+﻿namespace ACS.Lexer
 {
     public class Token
     {

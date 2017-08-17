@@ -12,3 +12,10 @@ E:\Programing\Github\ACS\Source\ACS\bin\Debug\ACS.pdb
 E:\Programing\Github\ACS\Source\ACS\obj\Debug\ACS.csprojResolveAssemblyReference.cache
 E:\Programing\Github\ACS\Source\ACS\obj\Debug\ACS.exe
 E:\Programing\Github\ACS\Source\ACS\obj\Debug\ACS.pdb
+F:\Github\ACS\Source\ACS\bin\Debug\ACS.exe.config
+F:\Github\ACS\Source\ACS\obj\Debug\ACS.exe
+F:\Github\ACS\Source\ACS\obj\Debug\ACS.pdb
+F:\Github\ACS\Source\ACS\bin\Debug\Data\index.acs
+F:\Github\ACS\Source\ACS\bin\Debug\ACS.exe
+F:\Github\ACS\Source\ACS\bin\Debug\ACS.pdb
+F:\Github\ACS\Source\ACS\obj\Debug\ACS.csprojResolveAssemblyReference.cache

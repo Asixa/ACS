@@ -21,5 +21,7 @@ namespace ACS
                 throw new Exception(ex.Message);
             }
         }
+
+        public  static void Print(string s) { Console.WriteLine(s);}
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace ACS.ACS_Lexer
+namespace ACS.Lexer
 {
     internal class Lexer
     {
@@ -51,7 +51,7 @@ namespace ACS.ACS_Lexer
             stream_reader = new StreamReader(file_stream);
             while (ReadLine()){}
             queue.Add(null);
-            print_result(); //这里输出分析结果
+            //print_result(); //这里输出分析结果
             return queue;
         }
 
