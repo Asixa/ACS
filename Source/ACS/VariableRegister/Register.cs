@@ -9,6 +9,12 @@ namespace ACS.Variable_Register
    
     internal class Register
     {
+
+        public static void Init()
+        {
+            instance=new Register();
+        }
+
         public static Register instance;
         List<Vars> list=new List<Vars>();
         public Register()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Security.Cryptography;
 using ACS.Lexer;
 
@@ -12,6 +13,8 @@ namespace ACS.Parser
         String,//普通的字符串
         Token, //一类token
         Expression, //表达式
+        Group,
+        Field,
         Looptag//循环标记 
     }
 
@@ -264,6 +267,62 @@ namespace ACS.Parser
                         MatchFailed();      //匹配失败
                     }
                     break;
+                case ElementType.Group:
+                    var group=(ElementsGroup)e.value;
+                    SingleResult group_out;
+
+                    if (group.Match(q,now_id,out group_out))            //如果 标记 的类型等于 声明的内容
+                    {
+                        result.Add(group_out);
+                        MatchSuccessed();   //匹配成功
+                    }
+                    else
+                    {
+                        MatchFailed();      //匹配失败
+                    }
+                    break;
+                case ElementType.Field:
+                    var new_q = SplitArray(q, now_id, q.Count - 2);
+
+                    //foreach (var i in new_q)
+                    //{
+                    //    Console.Write(i.Value.ToString());
+                    //}
+                    //Console.WriteLine();
+                    //Console.ReadKey();
+                    var input = new List<Token>();
+                    var lineCount = 0;
+                    var LP_count = 0;
+                    
+                    foreach (var item in new_q)
+                    {
+                        if (item == null) break;
+                        switch (item.Value.ToString())
+                        {
+                            case "{":
+                                LP_count++;
+                                break;
+                            case "}":
+                                LP_count--;
+                                if (LP_count == 0) goto case ";";
+                                break;
+                            case ";":
+                                if (LP_count > 0) break;
+                                lineCount++;
+                                input.Add(item);
+                                result.Add("field", DataBase.MatchRules(input).result);//FIX ME 出错检测
+                                input = new List<Token>();
+                                continue;
+                            default:
+                                break;
+                        }
+                        input.Add(item);
+                    }
+
+                    now_id+=new_q.Count-1;
+                    MatchSuccessed();
+                    
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -314,6 +373,22 @@ namespace ACS.Parser
                         matched = true;     //匹配失败
                     }
                     break;
+                case ElementType.Group:
+                    var group = (ElementsGroup)e.value;
+                    SingleResult group_out;
+
+                    if (group.Match(q, now_id, out group_out))            //如果 标记 的类型等于 声明的内容
+                    {
+                        result.Add(group_out);
+                        now_id++;
+                        matched = true;//匹配成功
+                    }
+                    else
+                    {
+                        matched = true;     //匹配失败
+                    }
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -329,6 +404,21 @@ namespace ACS.Parser
         {
             matched = false; //当前模块匹配失败
         }
+
+        public static List<Token> SplitArray(List<Token> Source, int StartIndex, int EndIndex)
+        {
+            try
+            {
+                var result = new Token[EndIndex - StartIndex + 1];
+                for (var i = 0; i <= EndIndex - StartIndex; i++) result[i] = Source[i + StartIndex];
+                return new List<Token>(result);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
     } //处理器
 
@@ -405,17 +495,32 @@ namespace ACS.Parser
 
             var lineCount = 0;
 
+            int LP_count = 0;
+            
             foreach (var item in queue)
             {
                 if (item == null) break;
                 switch (item.Value.ToString())
                 {
                     case "{":
+                        LP_count++;
+                        break;
                     case "}":
+                        LP_count--;
+                        if (LP_count == 0) goto case ";";
+                        break;
                     case ";":
+                        if(LP_count>0)break;
                         lineCount++;
                         input.Add(item);
-                        Handle(MatchRules(input),lineCount);
+
+                        //foreach (var i in input)
+                        //{
+                        //    Console.Write(i.Value.ToString());
+                        //}
+                        //Console.WriteLine();
+
+                        Handle(MatchRules(input), lineCount);
                         input = new List<Token>();
                         continue;
                     default:
@@ -429,14 +534,14 @@ namespace ACS.Parser
         {
             if (!p.error)
             {
-                Console.WriteLine("第" + lineCount + "条匹配成功");
+            if(SemanticAnalyzer.SemanticAnalyzer.Debug)Console.WriteLine("第" + lineCount + "条匹配成功");
                 SemanticAnalyzer.SemanticAnalyzer.Analyze(p.result, "--");
-           //     Console.WriteLine();
+            if (SemanticAnalyzer.SemanticAnalyzer.Debug) Console.WriteLine();
             }
             else
             {
-                ADK.Print("没有匹配到公式");
-                Console.WriteLine();
+                ADK.Print("没有匹配到公式"); 
+                Console.WriteLine(); 
             }
         }
 
@@ -449,7 +554,9 @@ namespace ACS.Parser
         public static Element Int = new Element("int", ElementType.Token);
         public static Element Float = new Element("float", ElementType.Token);
         public static Element END = new Element(";");
-        
+        public static Element FieldStart = new Element("{");
+        public static Element FieldEnd = new Element("}");
+        public static Element Field = new Element("",ElementType.Field);
         #endregion
 
         #region 元素组
@@ -467,6 +574,14 @@ namespace ACS.Parser
             new Element("*"),
             new Element("/"),
         });
+
+        public static ElementsGroup BoolOperator = new ElementsGroup(new List<Element>
+        {
+            new Element("=="),
+            new Element("<="),
+            new Element(">="),
+            new Element("!="),
+        });
         #endregion
 
         #region 表达式
@@ -481,20 +596,52 @@ namespace ACS.Parser
             new ElementsGroup(1, ElementType.Looptag),
         });
 
+        public static Expression Bool = new Expression("Math", new List<ElementsGroup>
+        {
+            new ElementsGroup(Indentifier),
+            new ElementsGroup(BoolOperator),
+            MathElement,
+        });
 
         #endregion
 
         public static Processer MatchRules(List<Token> _input)
         {
             Processer processer;
-            processer = new Processer(_input, "math").Next(Math, ElementType.Expression).Next(END);
+
+            processer = new Processer(_input, "tag").Next("[").Next("identifier", ElementType.Token).Next("]").Next(END);
             if (processer.matched) return processer;
 
-            processer = new Processer(_input, "print").Next("print").Next("(").Next(Math, ElementType.Expression).Next(")").Next(END); ;
+            processer = new Processer(_input, "goto").Next("goto").Next("identifier", ElementType.Token).Next(END);
             if (processer.matched) return processer;
 
-            processer = new Processer(_input, "怕死了").Next("怕死了").Next("(").Next(Math, ElementType.Expression).Next(")").Next("<").Next("identifier", ElementType.Token).Next(">").Next(END); ;
+            //赋值语句 赋值算数式
+            processer = new Processer(_input, "Assignment1").Next("identifier", ElementType.Token).Next("=").Next(Math, ElementType.Expression).Next(END);
             if (processer.matched) return processer;
+
+            //赋值语句 赋值单独变量
+            processer = new Processer(_input, "Assignment2").Next("identifier", ElementType.Token).Next("=").Next(MathElement, ElementType.Group).Next(END);
+            if (processer.matched) return processer;
+
+            //输出
+            processer = new Processer(_input, "Print").Next("print").Next("(").Next("string", ElementType.Token).Next(")").Next(END);
+            if (processer.matched) return processer;
+            //输出
+            processer = new Processer(_input, "Print2").Next("print").Next("(").Next(MathElement, ElementType.Group).Next(")").Next(END);
+            if (processer.matched) return processer;
+            //输出
+            processer = new Processer(_input, "Print3").Next("print").Next("(").Next(Math, ElementType.Expression).Next(")").Next(END);
+            if (processer.matched) return processer;
+
+            processer = new Processer(_input, "if").Next("if").Next("(").Next("identifier", ElementType.Token).Next(BoolOperator, ElementType.Group).Next(Math, ElementType.Expression).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
+            if (processer.matched) return processer;
+
+
+            processer = new Processer(_input, "if").Next("if").Next("(").Next("identifier", ElementType.Token).Next(BoolOperator,ElementType.Group).Next(MathElement,ElementType.Group).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
+            if (processer.matched) return processer;
+
+
+
 
             return new Processer();
             //在这里进行报错 没有匹配搭配对应语法

@@ -12,7 +12,7 @@ namespace ACS
             watch.Start();  //开始监视代码运行时间
             //************************
    
-             var register = new Register();
+             Register.Init();
              var lexer_result = Lexer.Lexer._Main();
 
              var lexer_timespan = watch.Elapsed.TotalMilliseconds;
@@ -27,9 +27,5 @@ namespace ACS
             Console.WriteLine("完全执行时间：{0}(毫秒)", timespan.TotalMilliseconds);
             Console.ReadKey();
         }
-
-
-
-
     }
 }
