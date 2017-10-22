@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Interpreter\Interpreter.cs" />
     <Compile Include="Lexer\Lexer.cs" />
+    <Compile Include="Lexer\MyType.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="ADK.cs" />
     <Compile Include="Program.cs" />

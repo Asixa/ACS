@@ -2,7 +2,7 @@
 {
     public class Token
     {
-        public Token(int line,int seq,object value,string type)
+        public Token(int line,int seq,object value,int type)
         {
             line_number = line;
             this.seq = seq;
@@ -10,7 +10,7 @@
             this.type = type;
         }
 
-        public string type;
+        public int type;
         public int line_number;
         public int seq;
         public object Value { get; set; }

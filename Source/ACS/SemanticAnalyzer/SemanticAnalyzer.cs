@@ -9,17 +9,18 @@ namespace ACS.SemanticAnalyzer
 {
     internal class SemanticAnalyzer
     {
-        public static bool Debug=true;
+        public static bool Debug => Program.debug;
+
         public static void Analyze(Result result, string debug="")
         {
+            if(!Debug)return;
 
             if(Debug)Console.WriteLine(debug+"匹配到公式：" + result.name);
             var index=0;
-            Interpreter.Interpreter.Run(result);
+            //Interpreter.Interpreter.Run(result);
             if(Debug) foreach (var t in result.commands)
             {
                 index++;
-                Analyze_Single_result(t);
                 if (Debug)
                 {
                     Console.WriteLine(debug + "<" + index + "> 属性:[" + t.type + "] 值:[" + t.value + "]");
@@ -37,9 +38,5 @@ namespace ACS.SemanticAnalyzer
             }
         }
 
-        private static void Analyze_Single_result(SingleResult r)
-        {
-            
-        }
     }
 }

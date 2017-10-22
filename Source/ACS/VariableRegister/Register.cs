@@ -51,7 +51,7 @@ namespace ACS.Variable_Register
             {
                 if (t.name == name) return t.value;
             }
-            throw new ArgumentNullException($"变量不存在的");
+            return "NULL";
         }
 
         public static bool Contain(string name) =>  instance.list.Any(t => t.name == name);

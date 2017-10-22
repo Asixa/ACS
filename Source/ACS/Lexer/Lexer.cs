@@ -9,26 +9,26 @@ namespace ACS.Lexer
     {
         public static List<TokenDefinition> definitions = new List<TokenDefinition>
         {
-            new TokenDefinition("",""),
-            new TokenDefinition("","(\\v*)"),
-            new TokenDefinition("","(//.*)"),
-            new TokenDefinition("float","([-]?[0-9]+[.][0-9]+)","Float"),
-            new TokenDefinition("string","(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"),
-            new TokenDefinition("identifier","([A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|)"),
-            new TokenDefinition("int","([-]?[0-9]+)","Int"),
-            new TokenDefinition("operator","[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"),
+            new TokenDefinition(MyType.NULL,""),
+            new TokenDefinition(MyType.NULL,"(\\v*)"),
+            new TokenDefinition(MyType.NULL,"(//.*)"),
+            new TokenDefinition(MyType.Float,"([-]?[0-9]+[.][0-9]+)","Float"),
+            new TokenDefinition(MyType.String,"(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"),
+            new TokenDefinition(MyType.Identifier,"([A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|)"),
+            new TokenDefinition(MyType.Int,"([-]?[0-9]+)","Int"),
+            new TokenDefinition(MyType.Operator,"[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"),
         };
 
-        public static string regex_pat;
-            //=
-            //"("+
-            //"(//.*)" +
-            //"|([-]?[0-9]+[.][0-9]+)" +
-            //"|([0-9]+)" +
-            //"|(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")" + 
-            //"|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|" +
-            //"|[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"+
-            //")?";
+        public static string regex_pat
+            =
+            "("+
+            "(//.*)" +
+            "|([-]?[0-9]+[.][0-9]+)" +
+            "|([0-9]+)" +
+            "|(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")" + 
+            "|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\|" +
+            "|[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]"+
+            ")?";
 
         public static string line;
         public static FileStream file_stream;
@@ -40,12 +40,12 @@ namespace ACS.Lexer
         public static List<Token> _Main()
         {
             
-            regex_pat = "("+definitions[2].regex;
-            for (var i = 3; i < definitions.Count; i++)
-            {
-                regex_pat += "|" + definitions[i].regex;
-            }
-            regex_pat += ")?";
+            //regex_pat = "("+definitions[2].regex;
+            //for (var i = 3; i < definitions.Count; i++)
+            //{
+            //    regex_pat += "|" + definitions[i].regex;
+            //}
+            //regex_pat += ")?";
 
             file_stream = new FileStream(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/index.acs", FileMode.Open);
             stream_reader = new StreamReader(file_stream);
@@ -114,8 +114,9 @@ namespace ACS.Lexer
 
     public class TokenDefinition
     {
-        public string name, regex,value_type;
-        public TokenDefinition(string name,string regex,string value_type="String")
+        public int name;
+        public string regex,value_type;
+        public TokenDefinition(int name,string regex,string value_type="String")
         {
             this.name = name;
             this.regex = regex;

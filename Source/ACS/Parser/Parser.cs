@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Security.Cryptography;
 using ACS.Lexer;
-
+using ACS.Interpreter;
 namespace ACS.Parser
 {
     #region 没必要动
@@ -119,6 +119,7 @@ namespace ACS.Parser
 
             while (true) //Group 内循环
             {
+          
                 SingleResult match_result;
                 if ((elements_id == elements.Count))//||(token_id==seq))
                 {
@@ -130,10 +131,11 @@ namespace ACS.Parser
    
                     if (!elements[elements_id].Match(q, token_id, out match_result)) // 匹配元素组
                         {
-                            
-                            if (elements[elements_id].Element.can_be_removed)
+
+                        if (elements[elements_id].Element.can_be_removed)
                             {
                                 elements_id++;
+                            
                                 continue;
                             }
                             else
@@ -173,7 +175,7 @@ namespace ACS.Parser
                             t_id--;
                             continue;
                         }
-                       
+                     
                         //跳出loop循环
                         loop_is_ready = false;
                         break;
@@ -486,9 +488,9 @@ namespace ACS.Parser
     //}
     #endregion
 
-    internal class Parser : DataBase
+    internal class  Parser : DataBase
     {
-        public static void Match(List<Token> queue)
+        public static List<Result> Match(List<Token> queue)
         {
             var input = new List<Token>();
             //这里是把语句一句一句扔给匹配的
@@ -496,7 +498,8 @@ namespace ACS.Parser
             var lineCount = 0;
 
             int LP_count = 0;
-            
+
+            var ResultTree = new List<Result>();
             foreach (var item in queue)
             {
                 if (item == null) break;
@@ -520,14 +523,31 @@ namespace ACS.Parser
                         //}
                         //Console.WriteLine();
 
-                        Handle(MatchRules(input), lineCount);
-                        input = new List<Token>();
-                        continue;
+                       // Handle(MatchRules(input), lineCount);
+                        var processer = MatchRules(input);
+                        if (SemanticAnalyzer.SemanticAnalyzer.Debug) Console.WriteLine("第" + lineCount + "行匹配到" + processer.result.name);
+                        SemanticAnalyzer.SemanticAnalyzer.Analyze(processer.result);
+                        if(SemanticAnalyzer.SemanticAnalyzer.Debug)Console.WriteLine();
+                        if (processer.error)
+                        {
+                            ADK.Print("错误：语法错误 行号:"+lineCount);
+                            
+                            return null;
+                        }
+                     
+                       ResultTree.Add(processer.result);
+                       input = new List<Token>();
+                       continue;
                     default:
                         break;
                 }
                 input.Add(item);
+               
+                
             }
+            //可以编译成文件，这里选择直接运行
+           
+            return ResultTree;
         }
 
         public static void Handle(Processer p,int lineCount)
@@ -551,6 +571,7 @@ namespace ACS.Parser
     {
         #region 元素
         public static Element Indentifier = new Element("identifier", ElementType.Token);
+        public static Element String = new Element("string", ElementType.Token);
         public static Element Int = new Element("int", ElementType.Token);
         public static Element Float = new Element("float", ElementType.Token);
         public static Element END = new Element(";");
@@ -564,6 +585,11 @@ namespace ACS.Parser
         public static ElementsGroup MathElement = new ElementsGroup(new List<Element>
         {
             Indentifier,Int,Float
+        });
+
+        public static ElementsGroup ALLElement = new ElementsGroup(new List<Element>
+        {
+            Indentifier,Int,Float,String
         });
 
         public static ElementsGroup MathOperator = new ElementsGroup(new List<Element>
@@ -588,31 +614,41 @@ namespace ACS.Parser
 
         public static Expression Math = new Expression("Math",new List<ElementsGroup>
         {
-            MathElement, 
+            new ElementsGroup(new Element("(",ElementType.String,true,true)),
+            MathElement,
+            new ElementsGroup(new Element(")",ElementType.String,true,true)),
             MathOperator, 
             new ElementsGroup(new Element("(",ElementType.String,true,true)),
             MathElement, 
             new ElementsGroup(new Element(")",ElementType.String,true,true)),
-            new ElementsGroup(1, ElementType.Looptag),
+            new ElementsGroup(3, ElementType.Looptag),
         });
 
         public static Expression Bool = new Expression("Math", new List<ElementsGroup>
         {
-            new ElementsGroup(Indentifier),
-            new ElementsGroup(BoolOperator),
-            MathElement,
+            ALLElement,
+            BoolOperator,
+            ALLElement,
         });
 
         #endregion
 
         public static Processer MatchRules(List<Token> _input)
         {
-            Processer processer;
+            Processer processer; 
+
+            processer = new Processer(_input, "Bool1").Next(Bool, ElementType.Expression).Next(END);
+            if (processer.matched) return processer;
+
 
             processer = new Processer(_input, "tag").Next("[").Next("identifier", ElementType.Token).Next("]").Next(END);
             if (processer.matched) return processer;
 
+
             processer = new Processer(_input, "goto").Next("goto").Next("identifier", ElementType.Token).Next(END);
+            if (processer.matched) return processer;
+
+            processer = new Processer(_input, "Input").Next("input").Next("(").Next("identifier", ElementType.Token).Next(")").Next(END);
             if (processer.matched) return processer;
 
             //赋值语句 赋值算数式
@@ -620,26 +656,29 @@ namespace ACS.Parser
             if (processer.matched) return processer;
 
             //赋值语句 赋值单独变量
-            processer = new Processer(_input, "Assignment2").Next("identifier", ElementType.Token).Next("=").Next(MathElement, ElementType.Group).Next(END);
+            processer = new Processer(_input, "Assignment2").Next("identifier", ElementType.Token).Next("=").Next(ALLElement, ElementType.Group).Next(END);
             if (processer.matched) return processer;
 
-            //输出
-            processer = new Processer(_input, "Print").Next("print").Next("(").Next("string", ElementType.Token).Next(")").Next(END);
+
+            //输出 strin
+            processer = new Processer(_input, "Print1").Next("print").Next("(").Next("string", ElementType.Token).Next(")").Next(END);
             if (processer.matched) return processer;
-            //输出
+            //输出 变量
             processer = new Processer(_input, "Print2").Next("print").Next("(").Next(MathElement, ElementType.Group).Next(")").Next(END);
             if (processer.matched) return processer;
-            //输出
+            //输出 数学式子
             processer = new Processer(_input, "Print3").Next("print").Next("(").Next(Math, ElementType.Expression).Next(")").Next(END);
             if (processer.matched) return processer;
 
-            processer = new Processer(_input, "if").Next("if").Next("(").Next("identifier", ElementType.Token).Next(BoolOperator, ElementType.Group).Next(Math, ElementType.Expression).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
+
+
+
+            processer = new Processer(_input, "if1").Next("if").Next("(").Next(Bool, ElementType.Expression).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
             if (processer.matched) return processer;
 
 
-            processer = new Processer(_input, "if").Next("if").Next("(").Next("identifier", ElementType.Token).Next(BoolOperator,ElementType.Group).Next(MathElement,ElementType.Group).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
+            processer = new Processer(_input, "if2").Next("if").Next("(").Next("identifier", ElementType.Token).Next(")").Next(FieldStart).Next(Field).Next(FieldEnd);
             if (processer.matched) return processer;
-
 
 
 

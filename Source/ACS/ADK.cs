@@ -23,5 +23,10 @@ namespace ACS
         }
 
         public  static void Print(string s) { Console.WriteLine(s);}
+
+        public static void Pause()
+        {
+            Console.ReadKey();
+        }
     }
 }
